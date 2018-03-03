@@ -65,7 +65,7 @@ public class DataGenerator {
 			}
 		}	
 		
-System.out.println("n = " + n + "  m = " + m); 
+		System.out.println("n = " + n + "  m = " + m); 
 		return dataSet; 
 	}
 
