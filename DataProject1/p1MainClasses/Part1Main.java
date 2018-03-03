@@ -8,8 +8,10 @@ import dataGenerator.DataReader;
 public class Part1Main {
 	public static void main(String[] args) throws FileNotFoundException{
 		
-		
 		DataReader fileReader = new DataReader();
+		Integer[][][] fileInfo = (Integer[][][]) fileReader.readDataFiles();
+		
+		
 		
 	}
 	

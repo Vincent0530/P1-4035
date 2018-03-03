@@ -65,5 +65,8 @@ public class DataReader {
 		System.out.println(); 
 	}
 
+	public int getN(){
+		return n;
+	}
 
 }
