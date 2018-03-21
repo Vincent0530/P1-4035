@@ -31,13 +31,13 @@ public class Part1Main {
 		}
 		
 		P1P2IntersectionFinder finder = new P1P2IntersectionFinder("P2");
-		
-		//Set2<Integer> intersection = (Set2<Integer>)(finder.intersectSets(setArray));
 		P3IntersectionFinder finder3 = new P3IntersectionFinder("P3");
+		
+		Set2<Integer> intersection = (Set2<Integer>)(finder3.intersectSets(setArray));
 		
 		for(int i=0; i<reader.getM(); i++)
 			System.out.println(setArray[i]);
-		//System.out.println(intersection);
+		System.out.println(intersection);
 		System.out.println();
 		
 		
