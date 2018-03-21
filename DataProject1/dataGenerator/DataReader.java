@@ -68,5 +68,8 @@ public class DataReader {
 	public int getN(){
 		return n;
 	}
+	public int getM(){
+		return m;
+	}
 
 }

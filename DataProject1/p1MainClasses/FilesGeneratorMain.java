@@ -13,7 +13,7 @@ public class FilesGeneratorMain {
 		if (args.length <= 3) {
 			int n = 20; 
 			int m = 50; 
-			int size = 50000; 
+			int size = 2000; //Original 50000
 			if (args.length >= 1) 
 				n = Integer.parseInt(args[0]); 
 			if (args.length >= 2) 
@@ -32,7 +32,7 @@ public class FilesGeneratorMain {
 		String parentDirectory = "inputFiles";   // must exist in current directory
 		DataGenerator dg = new DataGenerator(n, m, size);
 		Object[][][] setsLists = dg.generateData();  
-
+		
 		PrintWriter paramsFile = new PrintWriter(new File(parentDirectory, "parameters.txt")); 
 		paramsFile.println(n);   // save parameter n
 		paramsFile.println(m);   // save parameter m
