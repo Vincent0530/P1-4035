@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Map;
 
 import interfaces.IntersectionFinder;
+import interfaces.MySet;
+import mySetImplementations.Set1;
+import mySetImplementations.Set2;
 //sdfsdf
 public class StrategiesTimeCollection<E> 
 extends ArrayList<Map.Entry<Integer, Float>> { 
@@ -23,7 +26,19 @@ extends ArrayList<Map.Entry<Integer, Float>> {
     }
     
     public void runTrial(Integer[][][] dataset) { 
-    	//strategy.(dataset);
+    	MySet<Integer>[] setArray = new MySet [dataset[0].length];
+		MySet<Integer> unionSet; 
+		
+		for(int j=0; j<dataset[0].length; j++){
+			unionSet = new Set2();
+			for(int i=0; i<dataset.length;i++){
+				for(int k=0; k<dataset[i][j].length;k++){	
+					unionSet.add(dataset[i][j][k]);
+				}	
+			}	
+			setArray[j] = unionSet;
+		}
+    	strategy.intersectSets(setArray);
     }
     
     public void resetSum() { 
