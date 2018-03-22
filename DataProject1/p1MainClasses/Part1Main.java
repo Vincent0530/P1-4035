@@ -47,8 +47,35 @@ public class Part1Main {
 		System.out.println(finder4.getName()+intersection);
 		System.out.println();
 		
-		
-		
+	}
+	
+	private static MySet<Integer>[] unionSetCreator(MySet<Integer> unionSet) throws FileNotFoundException{
+		DataReader reader = new DataReader();
+		Integer[][][] filesInfo = (Integer[][][]) reader.readDataFiles();
+		MySet<Integer>[] setArray = new MySet [reader.getM()];
+		if(unionSet instanceof Set1){
+			for(int j=0; j<filesInfo[0].length; j++){
+				unionSet = new Set1();
+				for(int i=0; i<filesInfo.length;i++){
+					for(int k=0; k<filesInfo[i][j].length;k++){	
+						unionSet.add(filesInfo[i][j][k]);
+					}	
+				}	
+				setArray[j] = unionSet;
+			}
+		}
+		else{
+			for(int j=0; j<filesInfo[0].length; j++){
+				unionSet = new Set2();
+				for(int i=0; i<filesInfo.length;i++){
+					for(int k=0; k<filesInfo[i][j].length;k++){	
+						unionSet.add(filesInfo[i][j][k]);
+					}	
+				}	
+				setArray[j] = unionSet;
+			}
+		}
+		return setArray;
 	}
 	
 }
