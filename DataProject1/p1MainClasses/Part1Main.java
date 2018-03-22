@@ -30,7 +30,7 @@ public class Part1Main {
 			}	
 			setArray[j] = unionSet;
 		}
-		
+		//Hola
 		P1P2IntersectionFinder finder1 = new P1P2IntersectionFinder("P1");
 		P1P2IntersectionFinder finder2 = new P1P2IntersectionFinder("P2");
 		P3IntersectionFinder finder3 = new P3IntersectionFinder("P3");
