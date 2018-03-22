@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import interfaces.MySet;
 import mySetImplementations.Set2;
 
-public class P3IntersectionFinder<E> extends AbstractIntersectionFinder {
+public class P3IntersectionFinder<E> extends AbstractIntersectionFinder<E> {
 
 	public P3IntersectionFinder(String name) {
 		super(name);
@@ -13,12 +13,9 @@ public class P3IntersectionFinder<E> extends AbstractIntersectionFinder {
 	}
 
 	@Override
-	public MySet intersectSets(MySet[] t) {
+	public MySet<E> intersectSets(MySet<E>[] t) {
 		
 		ArrayList<E> allElements = new ArrayList<E>();
-		//MySet<E>[] unionSet = t;
-		
-		
 		for(int j=0; j<t.length; j++){
 			MySet<E> set = t[j];
 			for(E x : set){
