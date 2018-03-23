@@ -11,71 +11,36 @@ import mySetImplementations.Set2;
 import setIntersectionFinders.P1P2IntersectionFinder;
 import setIntersectionFinders.P3IntersectionFinder;
 import setIntersectionFinders.P4IntersectionFinder;
+import setUnionFinder.UnionFinder;
 
 public class Part1Main {
 	public static void main(String[] args) throws FileNotFoundException{
 		
 		DataReader reader = new DataReader();
 		Integer[][][] filesInfo = (Integer[][][]) reader.readDataFiles();
+				
+		UnionFinder<Integer> unionFinder = new UnionFinder<Integer>();
+		MySet<Integer>[] set1Array = unionFinder.findUnionSet1(filesInfo); 
+		MySet<Integer>[] set2Array = unionFinder.findUnionSet2(filesInfo); 
 		
-		MySet<Integer>[] setArray = new MySet [reader.getM()];
-		MySet<Integer> unionSet; 
-		
-		for(int j=0; j<filesInfo[0].length; j++){
-			unionSet = new Set1();
-			for(int i=0; i<filesInfo.length;i++){
-				for(int k=0; k<filesInfo[i][j].length;k++){	
-					unionSet.add(filesInfo[i][j][k]);
-				}	
-			}	
-			setArray[j] = unionSet;
-		}
-		//Hola
 		P1P2IntersectionFinder finder1 = new P1P2IntersectionFinder("P1");
 		P1P2IntersectionFinder finder2 = new P1P2IntersectionFinder("P2");
 		P3IntersectionFinder finder3 = new P3IntersectionFinder("P3");
 		P4IntersectionFinder finder4 = new P4IntersectionFinder("P4");
 		
-		Set2<Integer> intersection = (Set2<Integer>)(finder4.intersectSets(setArray));
+		Set1<Integer> P1intersection = (Set1<Integer>)(finder1.intersectSets(set1Array));
+		Set2<Integer> P2intersection = (Set2<Integer>)(finder2.intersectSets(set2Array));
+		Set2<Integer> P3intersection = (Set2<Integer>)(finder3.intersectSets(set2Array));
+		Set2<Integer> P4intersection = (Set2<Integer>)(finder4.intersectSets(set2Array));
 		
 		for(int i=0; i<reader.getM(); i++)
-			System.out.println(setArray[i]);
+			System.out.println(set1Array[i]);
 		
-		System.out.println(finder1.getName()+intersection);
-		//System.out.println(finder2.getName()+intersection);
-		System.out.println(finder3.getName()+intersection);
-		System.out.println(finder4.getName()+intersection);
-		System.out.println();
-		
-	}
-	
-	private static MySet<Integer>[] unionSetCreator(MySet<Integer> unionSet) throws FileNotFoundException{
-		DataReader reader = new DataReader();
-		Integer[][][] filesInfo = (Integer[][][]) reader.readDataFiles();
-		MySet<Integer>[] setArray = new MySet [reader.getM()];
-		if(unionSet instanceof Set1){
-			for(int j=0; j<filesInfo[0].length; j++){
-				unionSet = new Set1();
-				for(int i=0; i<filesInfo.length;i++){
-					for(int k=0; k<filesInfo[i][j].length;k++){	
-						unionSet.add(filesInfo[i][j][k]);
-					}	
-				}	
-				setArray[j] = unionSet;
-			}
-		}
-		else{
-			for(int j=0; j<filesInfo[0].length; j++){
-				unionSet = new Set2();
-				for(int i=0; i<filesInfo.length;i++){
-					for(int k=0; k<filesInfo[i][j].length;k++){	
-						unionSet.add(filesInfo[i][j][k]);
-					}	
-				}	
-				setArray[j] = unionSet;
-			}
-		}
-		return setArray;
+		System.out.println(finder1.getName()+P1intersection);
+		System.out.println(finder2.getName()+P2intersection);
+		System.out.println(finder3.getName()+P3intersection);
+		System.out.println(finder4.getName()+P4intersection);
+		System.out.println();	
 	}
 	
 }

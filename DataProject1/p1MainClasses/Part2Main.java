@@ -5,6 +5,8 @@ import java.io.FileNotFoundException;
 import experimentalClasses.ExperimentController;
 import experimentalClasses.StrategiesTimeCollection;
 import setIntersectionFinders.P1P2IntersectionFinder;
+import setIntersectionFinders.P3IntersectionFinder;
+import setIntersectionFinders.P4IntersectionFinder;
 
 public class Part2Main {
 	private static int[] parms = {10, 50, 1000, 50000, 1000, 200};
@@ -22,8 +24,9 @@ public class Part2Main {
 		
 		/**/	
 		ec.addStrategy(new StrategiesTimeCollection<Integer>(new P1P2IntersectionFinder<Integer>("P1")));
-//		ec.addStrategy(new StrategiesTimeCollection<Integer>(new SelectionSortSorter<Integer>()));
-//		ec.addStrategy(new StrategiesTimeCollection<Integer>(new InsertionSortSorter<Integer>()));
+		ec.addStrategy(new StrategiesTimeCollection<Integer>(new P1P2IntersectionFinder<Integer>("P2")));
+		ec.addStrategy(new StrategiesTimeCollection<Integer>(new P3IntersectionFinder<Integer>("P3")));
+		ec.addStrategy(new StrategiesTimeCollection<Integer>(new P4IntersectionFinder<Integer>("P4")));
 		/**/
 
 		ec.run();    // run the experiments on all the strategies added to the controller object (ec)

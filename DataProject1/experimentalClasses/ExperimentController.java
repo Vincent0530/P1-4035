@@ -57,7 +57,7 @@ public class ExperimentController{
 				// trial by all the strategies being tested.
 				
 				Integer[][][] dataset = (Integer[][][]) generateData(n, m, size);  //a set for this trial of given size
-
+				
 				// Apply each one of the strategies being tested using the previous 
 				// dataset (of size size) as input; and, for each, estimate the time
 				// that the execution takes. 

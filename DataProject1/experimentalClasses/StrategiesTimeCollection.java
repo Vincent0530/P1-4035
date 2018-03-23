@@ -7,11 +7,14 @@ import interfaces.IntersectionFinder;
 import interfaces.MySet;
 import mySetImplementations.Set1;
 import mySetImplementations.Set2;
-//sdfsdf
+import setIntersectionFinders.P1P2IntersectionFinder;
+import setUnionFinder.UnionFinder;
+
 public class StrategiesTimeCollection<E> 
 extends ArrayList<Map.Entry<Integer, Float>> { 
     private IntersectionFinder<Integer> strategy;    // the strategy
-    private float sum;   
+    private float sum;  
+    private boolean p1Happens = false;
     // variable to accumulate the sum of times that different
     // executions for the same time take. It is eventually used
     // to determine the average execution time for a particular 
@@ -26,19 +29,19 @@ extends ArrayList<Map.Entry<Integer, Float>> {
     }
     
     public void runTrial(Integer[][][] dataset) { 
-    	MySet<Integer>[] setArray = new MySet [dataset[0].length];
-		MySet<Integer> unionSet; 
-		
-		for(int j=0; j<dataset[0].length; j++){
-			unionSet = new Set2();
-			for(int i=0; i<dataset.length;i++){
-				for(int k=0; k<dataset[i][j].length;k++){	
-					unionSet.add(dataset[i][j][k]);
-				}	
-			}	
-			setArray[j] = unionSet;
-		}
+    	UnionFinder<Integer> unionFinder = new UnionFinder<Integer>();
+    	MySet<Integer>[] setArray;
+    	
+    	
+    	if ((!p1Happens && (strategy instanceof P1P2IntersectionFinder))){
+    		setArray = unionFinder.findUnionSet1(dataset);
+    		p1Happens = true;
+    	}
+    	else
+    		setArray = unionFinder.findUnionSet2(dataset);
+    	
     	strategy.intersectSets(setArray);
+    	
     }
     
     public void resetSum() { 
@@ -52,5 +55,6 @@ extends ArrayList<Map.Entry<Integer, Float>> {
     public float getSum() { 
     	return sum; 
     }
+
     
 }

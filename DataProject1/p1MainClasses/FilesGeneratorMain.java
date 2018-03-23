@@ -13,7 +13,7 @@ public class FilesGeneratorMain {
 		if (args.length <= 3) {
 			int n = 20; 
 			int m = 50; 
-			int size = 5000; //Original 50000
+			int size = 3000; //Original 50000
 			if (args.length >= 1) 
 				n = Integer.parseInt(args[0]); 
 			if (args.length >= 2) 
