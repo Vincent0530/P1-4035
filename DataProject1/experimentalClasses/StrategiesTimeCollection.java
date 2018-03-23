@@ -14,7 +14,7 @@ public class StrategiesTimeCollection<E>
 extends ArrayList<Map.Entry<Integer, Float>> { 
     private IntersectionFinder<Integer> strategy;    // the strategy
     private float sum;  
-    private boolean p1Happens = false;
+    //private boolean p1Happens = false;
     // variable to accumulate the sum of times that different
     // executions for the same time take. It is eventually used
     // to determine the average execution time for a particular 
@@ -33,9 +33,8 @@ extends ArrayList<Map.Entry<Integer, Float>> {
     	MySet<Integer>[] setArray;
     	
     	
-    	if ((!p1Happens && (strategy instanceof P1P2IntersectionFinder))){
+    	if ((strategy instanceof P1P2IntersectionFinder) && strategy.getName().equals("P1")){
     		setArray = unionFinder.findUnionSet1(dataset);
-    		p1Happens = true;
     	}
     	else
     		setArray = unionFinder.findUnionSet2(dataset);

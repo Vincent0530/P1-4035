@@ -7,6 +7,9 @@ import java.util.AbstractMap;
 import java.util.ArrayList;
 
 import dataGenerator.DataGenerator;
+import interfaces.MySet;
+import setIntersectionFinders.P1P2IntersectionFinder;
+import setUnionFinder.UnionFinder;
 
 public class ExperimentController{
 	//sdfshf
@@ -56,7 +59,7 @@ public class ExperimentController{
 				// The following will be the common dataset to be used in the current 
 				// trial by all the strategies being tested.
 				
-				Integer[][][] dataset = (Integer[][][]) generateData(n, m, size);  //a set for this trial of given size
+				Integer[][][] dataset = (Integer[][][]) generateData(n, m, size);  //a set for this trial of given 
 				
 				// Apply each one of the strategies being tested using the previous 
 				// dataset (of size size) as input; and, for each, estimate the time
